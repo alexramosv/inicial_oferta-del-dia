@@ -50,8 +50,6 @@ v8.12.0
 - [CMDer](http://cmder.net/): Command Line Emulator for Windows.
 - [Create React App 2](https://github.com/facebook/create-react-app)
 
-
-
 ### 1. Intro to React
 
 - Everything in React is a component
@@ -60,61 +58,43 @@ v8.12.0
 - <David> Webpack is a bundler.
 - Hot Reloading: reload the page automaticaly.
 
-
-
 ### How to declare a component
 
 Both are equivalent
 
 ```jsx
-class Dave extends React.Component {
-  render() {
-    return <p>"What do you think you are doing, Dave?"</p>;
-  }
-}
+<div>
+  <p>What do you think you are doing, Dave?</p>
+</div>
 ```
 
-```jsx
-const Dave = () => {
-  return <p>"What do you think you are doing, Dave?"</p>;
-};
+```js
+React.createElement(
+  "div",
+  {},
+  React.createElement("p", {}, "What do you think you are doing, Dave?")
+);
 ```
 
+### JSX Gotchas!
 
-Component structure
+#### Use `className` instead of `class`
 
 ```jsx
+return <p className="my-class">What do you think you are doing, Dave?</p>;
+```
 
+#### Beware ASI (Automatic Semicolon Insertion)
 
+If you leave `return` alone in one line a semicolon is automatically inserted! Use `return ( .... )`.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+```jsx
+return (
+  <div>
+    <p className="my-class">What do you think you are doing, Dave?</p>
+  </div>
+);
+```
 
 - Herramienta oculta: WebPack (es un bundler) selecciona todos los archivos y los une en uno solo.
 - Hot Raloading: permite que cuando cambiamos el código lo recargue automaticamnete

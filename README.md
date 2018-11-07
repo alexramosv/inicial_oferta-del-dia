@@ -50,6 +50,17 @@ v8.12.0
 - [CMDer](http://cmder.net/): Command Line Emulator for Windows.
 - [Create React App 2](https://github.com/facebook/create-react-app)
 
+### Troubleshooting
+
+<h2> ~/projects/oferta-del-dia</h1>
+
+```
+> rm -rf node_modules/
+> rm package-lock.json
+> nmp install
+> npm start
+```
+
 ### 1. Intro to React
 
 - Everything in React is a component

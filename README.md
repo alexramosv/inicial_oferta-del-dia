@@ -52,7 +52,7 @@ v8.12.0
 
 ### Troubleshooting
 
-<h2> ~/projects/oferta-del-dia</h1>
+`~/projects/oferta-del-dia`
 
 ```
 > rm -rf node_modules/
@@ -109,3 +109,60 @@ return (
 
 - Herramienta oculta: WebPack (es un bundler) selecciona todos los archivos y los une en uno solo.
 - Hot Raloading: permite que cuando cambiamos el código lo recargue automaticamnete
+
+## 2. `props` and `state`
+
+- `state`: Where the data lives.
+- `props`: A way to get data (`state`) into a componet.
+
+## 3. Functional Stateless Components
+
+Five of them are equivalent
+
+```jsx
+class Header extends React.Component {
+  render() {
+    return (
+      <h3 className="tagline">
+        <span>{this.props.tagline}</span>
+      </h3>
+    );
+  }
+}
+```
+
+```jsx
+const Header = props => {
+  return (
+    <h3 className="tagline">
+      <span>{props.tagline}</span>
+    </h3>
+  );
+};
+```
+
+```jsx
+const Header = ({ tagline }) => {
+  return (
+    <h3 className="tagline">
+      <span>{tagline}</span>
+    </h3>
+  );
+};
+```
+
+```jsx
+const Header = props => (
+  <h3 className="tagline">
+    <span>{props.tagline}</span>
+  </h3>
+);
+```
+
+```jsx
+const Header = ({ tagline }) => (
+  <h3 className="tagline">
+    <span>{tagline}</span>
+  </h3>
+);
+```

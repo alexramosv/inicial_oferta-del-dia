@@ -1,9 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./css/style.css";
+import Routes from "./components/Routes";
 
-import Router from "./components/Router";
-
-//Se puede hacer de las dos formas ☝👇
-
-ReactDOM.render(<Router />, document.querySelector("#app-container"));
+ReactDOM.render(<Routes />, document.querySelector("#app-container"));

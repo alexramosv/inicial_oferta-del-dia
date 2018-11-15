@@ -9,9 +9,29 @@ class AddFishForm extends React.Component {
 
   createFish = event => {
     // 1. stop the form from submitting
-    event.preventDefaul();
-    console.log(this.preventDefaul.current.value);
-    console.log(" MAKING A pececitos 🐟🐠");
+    event.preventDefault(); /*
+    console.log(this.nameRef.current.value);
+    console.log(this.priceRef.current.value);
+    console.log(this.statusRef.current.value);
+    console.log(this.descRef.current.value);
+    console.log(this.imageRef.current.value);
+
+    console.log(" MAKING A pececitos 🐟🐠");*/
+
+    //2. Create fish with data
+    const fish = {
+      name: this.nameRef.current.value,
+      price: parseFloat(this.priceRef.current.value),
+      status: this.statusRef.current.value,
+      desc: this.descRef.current.value,
+      image: this.imageRef.current.value
+    };
+
+    //3. Set fish to App component (where state lives)
+    this.props.addFish(fish);
+
+    //4. Refresh the form
+    event.currentTarget.reset();
   };
   render() {
     return (

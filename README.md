@@ -222,3 +222,5 @@ class StorePicker extends React.Component {
 -**State** is just a JavaScript Objet that holds data.
 
 React philosophy; Update type data (state) and let it React take it and update components for us.
+
+now alias https://oferta-del-dia-rcif0l3pj.now.sh obradoiroTeoAR

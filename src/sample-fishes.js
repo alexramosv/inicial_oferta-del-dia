@@ -78,6 +78,23 @@ const fishes = {
       "With 21-25 two bite prawns in each pound, these sweet morsels are perfect for shish-kabobs.",
     price: 2250,
     status: "available"
+  },
+
+  fish10: {
+    name: "Dory",
+    image: "/images/dory.jpeg",
+    desc:
+      "Sigue nadando, sigue nadando, sigue nadando nadando nadando 🎶🎵🎶🎵",
+    price: 5200,
+    status: "unavailable"
+  },
+
+  fish11: {
+    name: "Nemo",
+    image: "/images/nemo.jpg",
+    desc: "Por ir de risas casi muere mi papá 😂😁😂",
+    price: 4500,
+    status: "available"
   }
 };
 

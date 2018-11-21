@@ -7,7 +7,8 @@ import Menu from "./Menu";
 
 class App extends React.Component {
   state = {
-    fishes: {}
+    fishes: {},
+    order: {}
   };
   addFish = newFish => {
     //1.take a copy of the exsiting `State`
@@ -23,10 +24,20 @@ class App extends React.Component {
     this.setState({ fishes: sampleFishes });
   };
 
+  addToOrder = key => {
+    const newOrder = { ...this.state.order };
+    if (newOrder[key]) {
+      newOrder[key] = newOrder[key] + 1;
+    } else {
+      newOrder[key] = 1;
+    }
+    this.setState({ order: newOrder });
+  };
+
   render() {
     return (
       <div className="catch-of-the-day">
-        <Menu fishesDetails={this.state.fishes} />
+        <Menu fishesDetails={this.state.fishes} addToOrder={this.addToOrder} />
         <Order />
         <Inventory
           addFish={this.addFish}

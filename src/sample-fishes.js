@@ -86,7 +86,7 @@ const fishes = {
     desc:
       "Sigue nadando, sigue nadando, sigue nadando nadando nadando 🎶🎵🎶🎵",
     price: 5200,
-    status: "unavailable"
+    status: "available"
   },
 
   fish11: {

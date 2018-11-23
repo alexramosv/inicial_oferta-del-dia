@@ -5,7 +5,7 @@ Playing with React, Firebase and friends.
 ## 👾🤖🚀 Clone, install... GO 🚀🤖👾
 
 ```
-❯ git clone git@github.com:alexramosv/oferta-del-dia.git
+❯ git clone git@github.com:davidgchaves/oferta-del-dia.git
 ❯ cd oferta-del-dia
 ❯ npm install
 ```
@@ -40,7 +40,7 @@ v8.12.0
 ### How can I sync the project with a remote GitHub repository
 
 ```
-❯ git remote add origin git@github.com:alexramosv/oferta-del-dia.git
+❯ git remote add origin git@github.com:davidgchaves/oferta-del-dia.git
 ❯ git push -u origin master
 ```
 
@@ -52,24 +52,71 @@ v8.12.0
 
 ### Troubleshooting
 
-`~/projects/oferta-del-dia`
+Try
 
 ```
-> rm -rf node_modules/
-> rm package-lock.json
-> nmp install
-> npm start
+❯ rm -rf node_modules/
+❯ rm -rf package-lock.json
+❯ npm install
+❯ npm start
 ```
 
-### 1. Intro to React
+## 1. Intro to React
 
-- Everything in React is a component
-- A component is a reusable piece of code
-- There are a secret tool: WebPack (it's a Bundler (this select all the files and join them in one))
-- <David> Webpack is a bundler.
-- Hot Reloading: reload the page automaticaly.
+- Everything in react is a component!
+- A component is a reusable piece of code.
+- Webpack is a bundler.
 
 ### How to declare a component
+
+Both are equivalent
+
+```jsx
+class Dave extends React.Component {
+  render() {
+    return <p>What do you think you are doing, Dave?</p>;
+  }
+}
+```
+
+```jsx
+const Dave = () => {
+  return <p>What do you think you are doing, Dave?</p>;
+};
+```
+
+### Component structure
+
+```jsx
+// IMPORTS
+import React from "react";
+
+// COMPONENT
+class Dave extends React.Component {
+  render() {
+    return <p>What do you think you are doing, Dave?</p>;
+  }
+}
+
+// EXPORT
+export default Dave;
+```
+
+### To JSX or to not JSX...
+
+#### With only one tag
+
+Both are equivalent
+
+```jsx
+<p>What do you think you are doing, Dave?</p>
+```
+
+```js
+React.createElement("p", {}, "What do you think you are doing, Dave?");
+```
+
+#### With nested tags
 
 Both are equivalent
 
@@ -107,13 +154,10 @@ return (
 );
 ```
 
-- Herramienta oculta: WebPack (es un bundler) selecciona todos los archivos y los une en uno solo.
-- Hot Raloading: permite que cuando cambiamos el código lo recargue automaticamnete
-
 ## 2. `props` and `state`
 
-- `state`: Where the data lives.
-- `props`: A way to get data (`state`) into a componet.
+- `state`: where the data lives.
+- `props`: a way to get data (`state`) into a component.
 
 ## 3. Functional Stateless Components
 
@@ -217,10 +261,98 @@ class StorePicker extends React.Component {
 
 ## 7. State in React
 
--**State** is a JavaScript object that lives inside a component and stores all the data that components and probably its children need.
+- **State** is a JavaScript Object that lives inside a component and stores all the data that the component and probably its children need.
+- **State** is just a JavaScript Object that holds data.
 
--**State** is just a JavaScript Objet that holds data.
+React philosophy: Update the data (state) and let it React take it and update components for us.
 
-React philosophy; Update type data (state) and let it React take it and update components for us.
+You can never pass data up, you can only pass data down.
 
-now alias https://oferta-del-dia-rcif0l3pj.now.sh obradoiroTeoAR
+Functions that update state and the state itself need to be in the same component.
+
+## 8. Managing secrets with `.env`
+
+Create a file in the root of your project (same directory as `package.json`) that is called `.env`. Put this in there:
+
+```
+REACT_APP_API_KEY=<Your API key>
+REACT_APP_API_SECRET=<Your API secret>
+```
+
+Very important: YOu need to prefix every secret with `REACT_APP_`.
+
+Use it from JavaScript like this:
+
+```js
+process.env.REACT_APP_API_KEY;
+process.env.REACT_APP_API_SECRET;
+```
+
+And remember to `gitignore` the `.env` file!!!
+
+## X. Production build
+
+Just run 👇
+
+```sh
+❯ npm run build
+```
+
+### Deploying to `now`
+
+- [Now — Global Serverless Deployments](https://zeit.co/now)
+- [Create React App Example](https://github.com/zeit/now-examples/tree/master/create-react-app)
+
+```
+❯ npm install -g now
+❯ now -v
+12.1.3
+```
+
+Change `start` script to `dev` script.
+
+```json
+"scripts": {
+  "dev": "react-scripts start"
+}
+```
+
+Create a `now.json` file at the root of your project
+
+```json
+{
+  "version": 2,
+  "builds": [{ "src": "package.json", "use": "@now/static-build" }],
+  "routes": [
+    { "src": "^/static/(.*)", "dest": "/static/$1" },
+    { "src": ".*", "dest": "/index.html" }
+  ]
+}
+```
+
+Create a custom alias 👇
+
+```
+❯ now alias https://oferta-del-dia-ib9i5t5ue.now.sh obradoiroTeoFTW
+```
+
+You can access your site through `https://obradoiroteoftw.now.sh/`.
+
+### Deploy to Netlify
+
+```
+❯ npm install -g netlify-cli
+❯ netlify --version
+netlify-cli/2.2.1 darwin-x64 node-v8.12.0
+```
+
+Create a `_redirects` file 👇
+
+```
+/*    /index.html   200
+```
+
+```
+❯ cp _redirects build/
+❯ netlify deploy
+```

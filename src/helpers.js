@@ -23,6 +23,7 @@ export function slugify(text) {
 export function getFunName() {
   const adjectives = [
     "adorable",
+    "tu",
     "beautiful",
     "clean",
     "drab",
@@ -57,11 +58,13 @@ export function getFunName() {
     "scary",
     "thoughtless",
     "uptight",
-    "worried"
+    "worried",
+    "puta"
   ];
 
   const nouns = [
     "women",
+    "madre",
     "men",
     "children",
     "teeth",

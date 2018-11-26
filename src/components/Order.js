@@ -5,7 +5,7 @@ class Order extends React.Component {
   totalReducer = (subTotal, value) => {
     const fish = this.props.fishes[value];
     const quatity = this.props.order[value];
-    const isAvaliable = fish.status === "available";
+    const isAvaliable = fish && fish.status === "available";
 
     if (isAvaliable) {
       return quatity * fish.price + subTotal;
@@ -17,7 +17,11 @@ class Order extends React.Component {
   renderOrder = orderKey => {
     const quantity = this.props.order[orderKey];
     const fish = this.props.fishes[orderKey];
-    const isAvaliable = fish.status === "available";
+    const isAvaliable = fish && fish.status === "available";
+
+    if (!fish) {
+      return null;
+    }
 
     if (isAvaliable) {
       return (
@@ -30,7 +34,7 @@ class Order extends React.Component {
       return (
         <li key={orderKey}>
           Baby I'm sorry, Not Sorry 🎵🎶
-          {fish.name} is not available!
+          {fish ? fish.name : "product"} is not available!
         </li>
       );
     }
